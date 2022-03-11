@@ -31,16 +31,15 @@ class LoginController extends Controller
        return redirect("user/profile");
     }
 
+    public function profile()
+    {
+        return view('profile',["user" => User::find(auth()->user()->id)]);
+    }
+
     public function logout()
     {
         Auth::logout();
 
         return redirect("/");
     }
-
-    public function profile()
-    {
-        return view('profile',["user" => User::find(auth()->user()->id)]);
-    }
-
 }
